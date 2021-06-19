@@ -1,0 +1,12 @@
+/.idea/
+/__pycache__/
+__pycache__
+__pycache__/
+.virtualenvironment
+.virtualenvironment/
+*.pyc
+/build
+/venv
+/wvenv
+/.env
+/res/
