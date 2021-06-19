@@ -7,7 +7,7 @@ email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 
 """
 from app import db
-from app.models import RelativeQuotaCount
+from app.models import RelativeQuotaCount, Video, utcnow_aware
 from app_config import API_KEY
 import pyyoutube as ptube
 
@@ -54,3 +54,51 @@ class Fetcher:
             print('Error Getting Data:', e)
         db.close()
         return videos
+
+    def get_video_by_id(self, video_id):
+        db.connect()
+        try:
+            res = self.api.get_video_by_id(video_id=video_id)
+            snip = res.items[0].snippet
+            stts = res.items[0].statistics
+            content = res.items[0].contentDetails
+            tags = snip.tags
+            title = snip.title
+            view_count = stts.viewCount
+            like_count = stts.likeCount
+            dislike_count = stts.dislikeCount
+            comment_count = stts.commentCount
+            m = int(content.duration.split('M')[0].replace('PT', '')) * 60
+            sec = int(content.duration.split('M')[1].replace('S', ''))
+            duration = m + sec
+
+            try:
+                v, isCreated = Video.get_or_create(video_id=video_id)
+                pre_fetch_count = v.fetch_count
+                v.title = title
+                v.tags = tags
+                v.view_count = view_count
+                v.like_count = like_count
+                v.dislike_count = dislike_count
+                v.comment_count = comment_count
+                v.duration = duration
+                v.fetch_count = pre_fetch_count+1
+                v.last_edited = utcnow_aware
+                v.save()
+                print ('Successfully Updated video Id:', video_id)
+                try:
+                    rqc = RelativeQuotaCount(op_name='get_list', unit_spent=1).save()
+                except:
+                    pass
+
+            except Exception as e:
+                print ('Error Saving Video Data:', e)
+        except:
+            pass
+
+        db.close()
+
+if __name__=='__main__':
+    video_id = 'E1aybmBrT_M'
+    f = Fetcher()
+    f.get_video_by_id(video_id)
