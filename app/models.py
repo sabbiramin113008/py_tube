@@ -11,8 +11,6 @@ from peewee import *
 import pytz
 
 from app import db
-from app_config import DEFAULT_TIMEZONE
-
 
 class BaseModel(Model):
     class Meta:

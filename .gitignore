@@ -10,3 +10,4 @@ __pycache__/
 /wvenv
 /.env
 /res/
+/.pytest_cache

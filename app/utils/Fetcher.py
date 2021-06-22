@@ -8,7 +8,7 @@ email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 """
 from app import db
 from app.models import RelativeQuotaCount, Video, utcnow_aware
-from app_config import API_KEY
+from app_config import Config
 import pyyoutube as ptube
 
 '''
@@ -20,7 +20,7 @@ A search request costs 100 units.
 
 class Fetcher:
     def __init__(self):
-        self.api_key = API_KEY
+        self.api_key = Config.API_KEY
         self.api = ptube.Api(api_key=self.api_key)
 
 

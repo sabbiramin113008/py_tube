@@ -9,10 +9,10 @@ email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 from app import db
 from app.models import Video
 from app.utils.Fetcher import Fetcher
-from app_config import *
+from app_config import Config
 
 if __name__ == '__main__':
-    channel_id = DEFAULT_CHANNEL_ID
+    channel_id = Config.DEFAULT_CHANNEL_ID
     fetcher = Fetcher()
     videos = fetcher.get_all_videos(channel_id=channel_id)
     db.connect()

@@ -19,15 +19,19 @@ logging.getLogger().setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 cors = CORS(app)
-app.secret_key = APP_SECRET
+if APP_ENV == 'DEV':
+    app.config.from_object('app_config.DevConfig')
+else:
+    app.config.from_object('app_config.TestConfig')
 
 db = MySQLDatabase(
-    DATABASE_NAME,
-    user=DATABASE_USER,
-    password=DATABASE_PASSWORD,
-    host=DATABASE_HOST,
-    port=DATABASE_PORT
+    app.config.get('DATABASE_NAME'),
+    user=app.config.get('DATABASE_USER'),
+    password=app.config.get('DATABASE_PASSWORD'),
+    host=app.config.get('DATABASE_HOST'),
+    port=app.config.get('DATABASE_PORT')
 )
+
 
 @app.before_request
 def _db_connect():

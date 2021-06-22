@@ -6,3 +6,12 @@ date: 19 Jun 2021
 email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 
 """
+from app import app
+
+
+if __name__=='__main__':
+    app.run(
+        host='localhost',
+        port=5003,
+        debug=True
+    )
