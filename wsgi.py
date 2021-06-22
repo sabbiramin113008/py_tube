@@ -7,9 +7,10 @@ email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 
 """
 from app import app
-
+from cron_handler import start_scheduler
 
 if __name__=='__main__':
+    start_scheduler()
     app.run(
         host='localhost',
         port=5003,
