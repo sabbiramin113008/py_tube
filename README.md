@@ -52,7 +52,7 @@ in two `DEV` or `TEST` mode, make sure to set it before running, in `./app_confi
 Here,
 - `localhost` - the hostname (I kept it localhost, change it, if is required)
 - `5600` - The Port No.
-- `-w 2` - The Number of Workers, as it is 2 in this setup. ( Pleas change accordingly).
+- `-w 2` - The Number of Workers, as it is 2 in this setup. ( Please change accordingly).
 
 ### Major Components
 1. `API Server` that enlists videos with different filter option.
