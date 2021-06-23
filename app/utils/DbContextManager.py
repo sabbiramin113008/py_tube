@@ -15,6 +15,10 @@ from app.models import Video
 
 @contextlib.contextmanager
 def db_handler():
-    db.connect()
-    yield
-    db.close()
+    try:
+        db.connect()
+        yield
+    except Exception as e:
+        print ('Error Connecting Db:', e)
+    finally:
+        db.close()

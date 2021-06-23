@@ -42,3 +42,7 @@ def _db_connect():
 def _db_close(exc):
     if not db.is_closed():
         db.close()
+
+
+from .api.video import *
+from .dashboard import *
