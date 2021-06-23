@@ -18,6 +18,13 @@ APP_ENV = 'TEST'
 # Cron Config
 CRON_INTERVAL_MINUTES = 30
 
+# API CALL LIMIT
+API_CALL_MAX_LIMIT = 10000
+
+# Fetcher Video Fetching config
+video_limit = 50
+video_count = 50
+
 class Config:
     # Youtube API V3 API-KEY
     API_KEY = os.getenv('API_KEY')

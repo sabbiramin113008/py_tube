@@ -9,7 +9,7 @@ email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 from app import db
 from app.models import RelativeQuotaCount, Video, utcnow_aware
 from app.utils.DbContextManager import db_handler
-from app_config import Config
+from app_config import Config, video_limit, video_count
 import pyyoutube as ptube
 
 '''
@@ -25,7 +25,7 @@ class Fetcher:
         self.api = ptube.Api(api_key=self.api_key)
 
 
-    def get_all_videos(self, channel_id, limit=50, count=50):
+    def get_all_videos(self, channel_id, limit=video_limit, count=video_count):
         videos = list()
         with db_handler():
 
