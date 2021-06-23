@@ -87,25 +87,25 @@ Content-Type:application/json
 9.  `like_count_eq`: (int) Total Like Count equal operative
 5. Sample Query: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
 #### Sample Response Body:
-    ```code
-    {
-  "count": 1,
-  "models": [
-    {
-      "channel_id": "UC1ZRNf5khuJFrtacQsFqV6w",
-      "comment_count": 124,
-      "created": "Tue, 22 Jun 2021 21:28:01 GMT",
-      "dislike_count": 9,
-      "duration": 290,
-      "fetch_count": 2,
-      "id": 99,
-      "last_edited": "Tue, 22 Jun 2021 23:22:34 GMT",
-      "like_count": 1141,
-      "tags": "['UFC', 'Khabib', 'MMA', 'RT Sport', 'abdulmanap']",
-      "title": "'That was my first fight without Abdulmanap in my corner' - Tagir Ulanbekov",
-      "video_id": "UDtmAKq_PZg",
-      "view_count": 46394
-    }
-  ]
+```json
+{
+"count": 1,
+"models": [
+{
+  "channel_id": "UC1ZRNf5khuJFrtacQsFqV6w",
+  "comment_count": 124,
+  "created": "Tue, 22 Jun 2021 21:28:01 GMT",
+  "dislike_count": 9,
+  "duration": 290,
+  "fetch_count": 2,
+  "id": 99,
+  "last_edited": "Tue, 22 Jun 2021 23:22:34 GMT",
+  "like_count": 1141,
+  "tags": "['UFC', 'Khabib', 'MMA', 'RT Sport', 'abdulmanap']",
+  "title": "'That was my first fight without Abdulmanap in my corner' - Tagir Ulanbekov",
+  "video_id": "UDtmAKq_PZg",
+  "view_count": 46394
+}
+]
 }
 ```
