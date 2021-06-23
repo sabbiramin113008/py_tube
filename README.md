@@ -59,4 +59,49 @@ Here,
 2. `Admin Dashboard`, a Minimal Flask Admin for Quick views, search, filter and edits.
 3. `Cron JOB`, that periodically updates the latest analytics of the videos of a particular Youtube Channel.
 4. `Fetcher Script`, that can be used to load, fetch and save Video with analytics.
-5. `Unit Test`, of some of the base testing utility. 
+5. `Unit Test`, of some of the base testing utility.
+
+
+### API Doc
+Insomnia API Collections are added in the `./insomnia_docs` dir. Just load them to play with.
+GET List Videos
+    - HTTP Method: GET
+    - Request Header:
+    ```code
+    Content-Type:application/json
+    ```
+    - API Path: /api/v1/videos
+    - Query Params:
+        - `page`: (int) Page Number
+        - `size`: (int) Limit of the Returned results.
+        - `tags`: (str) String of tags, separated by comma.
+        - `view_count_lt`: (int) Total view count less than operative.
+        - `view_count_gt`: (int) Total view count greater than operative
+        - `view_count_eq`: (int) Total view count equal operative
+        - `like_count_lt`: (int) Total Like Count less than operative.
+        - `like_count_gt`: (int) Total Like Count greater than operative
+        - `like_count_eq`: (int) Total Like Count equal operative
+    - Sample Query: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
+    - Sample Response Body:
+    ```code
+    {
+  "count": 1,
+  "models": [
+    {
+      "channel_id": "UC1ZRNf5khuJFrtacQsFqV6w",
+      "comment_count": 124,
+      "created": "Tue, 22 Jun 2021 21:28:01 GMT",
+      "dislike_count": 9,
+      "duration": 290,
+      "fetch_count": 2,
+      "id": 99,
+      "last_edited": "Tue, 22 Jun 2021 23:22:34 GMT",
+      "like_count": 1141,
+      "tags": "['UFC', 'Khabib', 'MMA', 'RT Sport', 'abdulmanap']",
+      "title": "'That was my first fight without Abdulmanap in my corner' - Tagir Ulanbekov",
+      "video_id": "UDtmAKq_PZg",
+      "view_count": 46394
+    }
+  ]
+}
+    ```
