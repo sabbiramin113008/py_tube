@@ -65,24 +65,27 @@ Here,
 ### API Doc
 Insomnia API Collections are added in the `./insomnia_docs` dir. Just load them to play with.
 GET List Videos
-    1. HTTP Method: GET
-    2.  Request Header:
-    ```code
-    Content-Type:application/json
-    ```
-    3. API Path: /api/v1/videos
-    4.  Query Params:
-        1. `page`: (int) Page Number
-        2.  `size`: (int) Limit of the Returned results.
-        3.  `tags`: (str) String of tags, separated by comma.
-        4.  `view_count_lt`: (int) Total view count less than operative.
-        5.  `view_count_gt`: (int) Total view count greater than operative
-        6.  `view_count_eq`: (int) Total view count equal operative
-        7.  `like_count_lt`: (int) Total Like Count less than operative.
-        8.  `like_count_gt`: (int) Total Like Count greater than operative
-        9.  `like_count_eq`: (int) Total Like Count equal operative
-    5. Sample Query: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
-    6.  Sample Response Body:
+#### HTTP Method:
+GET
+#### Request Header:
+```code
+Content-Type:application/json
+```
+#### API Path:
+/api/v1/videos
+
+#### Query Params:
+1. `page`: (int) Page Number
+2.  `size`: (int) Limit of the Returned results.
+3.  `tags`: (str) String of tags, separated by comma.
+4.  `view_count_lt`: (int) Total view count less than operative.
+5.  `view_count_gt`: (int) Total view count greater than operative
+6.  `view_count_eq`: (int) Total view count equal operative
+7.  `like_count_lt`: (int) Total Like Count less than operative.
+8.  `like_count_gt`: (int) Total Like Count greater than operative
+9.  `like_count_eq`: (int) Total Like Count equal operative
+5. Sample Query: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
+#### Sample Response Body:
     ```code
     {
   "count": 1,
