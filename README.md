@@ -569,7 +569,7 @@ possible_call_count = total_video_count - remaining_call_count
 videos = Video.select().paginate(1, possible_call_count) sorted by `last_edit` and `view_count`
 ```
 then, only `videos` are updated.
-5. else, all the videos are updates as the `remaining_call_count` is greater than the `total_video_count`.
+5. Else, all the videos are updates as the `remaining_call_count` is greater than the `total_video_count`.
 
 
 
