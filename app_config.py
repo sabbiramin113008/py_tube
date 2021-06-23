@@ -15,6 +15,8 @@ load_dotenv()
 
 # APP_ENV = 'DEV'
 APP_ENV = 'TEST'
+# Cron Config
+CRON_INTERVAL_MINUTES = 30
 
 class Config:
     # Youtube API V3 API-KEY

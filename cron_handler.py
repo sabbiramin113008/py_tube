@@ -8,16 +8,13 @@ email: sabbiramin.cse11ruet@gmail.com, sabbir@rokomari.com
 """
 
 from apscheduler.schedulers.background import BackgroundScheduler
-
-from app.tasks.video_tasks import current_video_count_task
+from app_config import CRON_INTERVAL_MINUTES
+from app.tasks.video_tasks import current_video_count_task, update_videos
 
 def start_scheduler():
     notification_scheduler = BackgroundScheduler()
-    notification_scheduler.add_job(current_video_count_task, "interval", minutes=1,
+    notification_scheduler.add_job(current_video_count_task, "interval", minutes=10,
                                    id='video_count_task', replace_existing=True)
+    notification_scheduler.add_job(update_videos, "interval", minutes=CRON_INTERVAL_MINUTES,
+                                   id='video_update_task', replace_existing=True)
     notification_scheduler.start()
-    #self.scheduler = APScheduler()
-    # scheduler.api_enabled = True
-    # scheduler.init_app(self.app)
-    # scheduler.start()
-    # scheduler.add_job(func=ping_server_auto, id=self.service_name, trigger='interval', seconds=3)
