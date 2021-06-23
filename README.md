@@ -118,18 +118,21 @@ http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA&like_count_gt=100
 }
 ```
 
-### Optimizing API Call to Update Video Analytics.
+### Optimizing API Call to Update Video Analytics (Pseudo Algo ( Implemented)
 --------------------------------------------------
 Quota limit of Youtube V3 API is 10K Per Day for free tier. So it is important to keep the track of the quota count so as to
 call the API efficiently.
 
-First, after each `CRON_INTERVAL`, the remaining API quota limit is calculated.
-Also the `total_video_count` is also fetched.
-Now, the `remaining_call_count` is calculated as
-remaining_call_count = API_CALL_MAX_LIMIT - total_quota_spent ( the current day)
-If `total_video_count` > `remaining_call_count`:
-    possible_call_count = total_video_count -remaining_call_count
-    videos = Video.select().paginate(1, possible_call_count) sorted by `last_edit` and `view_count`
+1. First, after each `CRON_INTERVAL`, the remaining API quota limit is calculated.
+2. Also the `total_video_count` is also fetched.
+3. Now, the `remaining_call_count` is calculated as
+`remaining_call_count` = `API_CALL_MAX_LIMIT` - `total_quota_spent` ( the current day)
+4. If `total_video_count` > `remaining_call_count`:
+    `possible_call_count` = `total_video_count` - `remaining_call_count`
+     `videos` = `Video.select().paginate(1, possible_call_count)`` sorted by `last_edit` and `view_count`
     then, only `videos` are updated.
-else, all the videos are updates as the remaining_call_count is greater than the total_video_count.
+5. else, all the videos are updates as the `remaining_call_count` is greater than the `total_video_count`.
+
+
+
 
