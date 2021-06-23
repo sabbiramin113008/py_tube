@@ -26,6 +26,9 @@ user_args = {
     'like_count_lt': fields.Int(required=False),
     'like_count_gt': fields.Int(required=False),
     'like_count_eq': fields.Int(required=False),
+    'comment_count_lt': fields.Int(required=False),
+    'comment_count_gt': fields.Int(required=False),
+    'comment_count_eq': fields.Int(required=False),
 
 }
 
@@ -42,6 +45,12 @@ def get_videos(args):
     like_count_lt = args.get('like_count_lt')
     like_count_gt = args.get('like_count_gt')
     like_count_eq = args.get('like_count_eq')
+    comment_count_lt = args.get('comment_count_lt')
+    comment_count_gt = args.get('comment_count_gt')
+    comment_count_eq = args.get('comment_count_eq')
+    dislike_count_lt = args.get('dislike_count_lt')
+    dislike_count_gt = args.get('dislike_count_gt')
+    dislike_count_eq = args.get('dislike_count_eq')
 
     sql_clause = list()
     for k, v in args.items():
@@ -60,6 +69,18 @@ def get_videos(args):
             sql_clause.append(Video.like_count > like_count_gt)
         if like_count_eq:
             sql_clause.append(Video.like_count == like_count_eq)
+        if comment_count_lt:
+            sql_clause.append(Video.comment_count < comment_count_lt)
+        if comment_count_gt:
+            sql_clause.append(Video.comment_count > comment_count_gt)
+        if comment_count_eq:
+            sql_clause.append(Video.comment_count == comment_count_eq)
+        if dislike_count_lt:
+            sql_clause.append(Video.dislike_count < dislike_count_lt)
+        if dislike_count_gt:
+            sql_clause.append(Video.dislike_count > dislike_count_gt)
+        if dislike_count_eq:
+            sql_clause.append(Video.dislike_count == dislike_count_eq)
 
     try:
         exp = reduce(operator.and_, sql_clause)

@@ -85,7 +85,15 @@ Content-Type:application/json
 7.  `like_count_lt`: (int) Total Like Count less than operative.
 8.  `like_count_gt`: (int) Total Like Count greater than operative
 9.  `like_count_eq`: (int) Total Like Count equal operative
-5.  `Sample API Query`: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
+10. `comment_count_lt`: (int) Total Comment count less than operative.
+11. `comment_count_gt`: (int) Total Comment count greater than operative
+12. `comment_count_eq`: (int) Total Comment count equal operative
+13. `dislike_count_lt`: (int) Total Dislike Count less than operative.
+14. `dislike_count_gt`: (int) Total Dislike Count greater than operative
+15. `dislike_count_eq`: (int) Total Dislike Count equal operative
+
+#### Sample API Query:
+http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA&like_count_gt=100&dislike_count_lt=500
 #### Sample Response Body:
 ```json
 {
