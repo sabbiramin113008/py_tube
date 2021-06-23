@@ -85,7 +85,7 @@ Content-Type:application/json
 7.  `like_count_lt`: (int) Total Like Count less than operative.
 8.  `like_count_gt`: (int) Total Like Count greater than operative
 9.  `like_count_eq`: (int) Total Like Count equal operative
-5. Sample Query: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
+5.  `Sample API Query`: http://localhost:5003/api/v1/videos?view_count_gt=500&tags=MMA
 #### Sample Response Body:
 ```json
 {
