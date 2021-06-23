@@ -63,8 +63,9 @@ Here,
 
 
 ### API Doc
+-------------------------------------
 Insomnia API Collections are added in the `./insomnia_docs` dir. Just load them to play with.
-GET List Videos
+### GET List Videos
 #### HTTP Method:
 GET
 #### Request Header:
